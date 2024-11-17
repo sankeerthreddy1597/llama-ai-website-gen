@@ -6,9 +6,7 @@ type OptionType = {
 
 type ChatType = {
     content: string,
-    setUserQuery: any,
-    setIsLoading: any,
-    setLlamaResponse: any
+    stream: boolean
 }
 
 const defaultHeaders = {
@@ -16,12 +14,12 @@ const defaultHeaders = {
     Accept: 'application/json',
 }
 
-export const getChatResponse = async ({ content, setUserQuery, setIsLoading, setLlamaResponse }: ChatType) => {
+export const getChatResponse = async ({ content, stream }: ChatType): Promise<any> => {
 
     const body = JSON.stringify({
         model: 'llama3.2',
         messages: [{ role: 'user', content }],
-        stream: false
+        stream
     });
 
     const options: OptionType = {
@@ -29,17 +27,5 @@ export const getChatResponse = async ({ content, setUserQuery, setIsLoading, set
         method: 'POST',
         body
     };
-    try {
-        fetch('http://localhost:11434/api/chat', options)
-            .then(res => res.json())
-            .then(data => {
-                setLlamaResponse(data?.message?.content);
-                setIsLoading(false);
-                setUserQuery('')
-            });
-    } catch (e) {
-        console.log(e);
-        setIsLoading(false);
-        setUserQuery('');
-    }
+    return await fetch('http://localhost:11434/api/chat', options);
 }
