@@ -60,41 +60,42 @@ export default function Home() {
   }
 
   return (
-    <div className="flex flex-col items-center min-h-screen p-8 px-16 gap-4 font-[family-name:var(--font-geist-sans)]">
+    <div className="flex flex-col items-center min-h-screen p-8 lg:px-16 gap-4 font-[family-name:var(--font-geist-sans)]">
       <h1>
         AI Web Gen
       </h1>
-      <div className="flex items-center justify-items-start w-full px-32">
+      <div className="flex flex-col lg:flex-row items-center justify-items-start w-full px-2 lg:px-32">
         <Textarea
           value={userQuery}
           onChange={(e) => setUserQuery(e.target.value)}
           placeholder="Enter Query"
-          className="w-96" />
+          className="lg:w-96" />
+        <div className="flex flex-row items-center">
+          <Button
+            variant="primary"
+            onClick={handleOnClick}
+            disabled={isLoading}
+            className="m-2"
+          >
+            {isLoading ? 'Generating...' : 'Generate Response'}
+          </Button>
 
-        <Button
-          variant="primary"
-          onClick={handleOnClick}
-          disabled={isLoading}
-          className="m-2"
-        >
-          {isLoading ? 'Generating...' : 'Generate Response'}
-        </Button>
-
-        <Select
-          value={selectedStreamOption}
-          onValueChange={(value) => setSelectedStreamOption(value)}
-        >
-          <SelectTrigger className="w-[100px]">
-            <SelectValue />
-          </SelectTrigger>
-          <SelectContent>
-            <SelectItem value="stream">Stream</SelectItem>
-            <SelectItem value="no-stream">No Stream</SelectItem>
-          </SelectContent>
-        </Select>
+          <Select
+            value={selectedStreamOption}
+            onValueChange={(value) => setSelectedStreamOption(value)}
+          >
+            <SelectTrigger className="w-[100px]">
+              <SelectValue />
+            </SelectTrigger>
+            <SelectContent>
+              <SelectItem value="stream">Stream</SelectItem>
+              <SelectItem value="no-stream">No Stream</SelectItem>
+            </SelectContent>
+          </Select>
+        </div>
       </div>
       <Separator className="w-4/5" />
-      <div className="flex flex-col justify-items-start w-full px-32 gap-2">
+      <div className="flex flex-col justify-items-start w-full px-4 lg:px-32 gap-2">
         <div>
           {chatUserQuery && <ChatComponent role="user" content={chatUserQuery} />}
         </div>
