@@ -3,12 +3,14 @@ This project is a personal project to build a web app that generates web pages i
 
 Currently, only the API integration with llama works, and the code is not optimised at all. (changes made just to get a response from the AI model based on UI response)
 
+Project In Progress
+
 Current UI
+/generate path
+
+
 Loading state while model prepares stream
 <img width="1432" alt="Screen Shot 2024-11-17 at 12 18 03 PM" src="https://github.com/user-attachments/assets/f4e14162-40e9-4856-b83b-ffc236e485d8">
-
-State while streaming data
-<img width="1422" alt="Screen Shot 2024-11-17 at 12 18 38 PM" src="https://github.com/user-attachments/assets/c5093344-43ef-4c66-960c-c31047984145">
 
 State after streaming is done
 <img width="1430" alt="Screen Shot 2024-11-17 at 12 21 01 PM" src="https://github.com/user-attachments/assets/1c2a4e4f-89ca-4be7-9c9e-790d0093ee86">
