@@ -71,14 +71,14 @@ export const PreviewAndCodeTabs = () => {
                 </TabsList>
 
                 <TabsContent value="preview" className="bg-white rounded-lg shadow-sm h-full pb-4">
-                    <div className="border p-4 bg-gray-50 rounded-md h-full relative">
+                    <div className="border p-4 bg-gray-50 rounded-md h-full">
                         <h3 className="text-xl font-bold mb-4">Live Preview</h3>
                         {/* iframe that will show the HTML/CSS content */}
                         <iframe
                             ref={iframeRef}
                             title="Preview"
-                            className="w-full h-80 border p-2 rounded-md"
-                            style={{ borderColor: "#ccc" }}
+                            className="w-full border p-2 rounded-md"
+                            style={{ borderColor: "#ccc", height: "90%" }}
                         ></iframe>
                     </div>
                 </TabsContent>
@@ -99,7 +99,7 @@ export const PreviewAndCodeTabs = () => {
                 </TabsContent>
 
                 <TabsContent value="css" className="bg-white rounded-lg shadow-sm h-full pb-4">
-                    <div className="border p-4 bg-gray-50 rounded-md h-ful relative">
+                    <div className="border p-4 bg-gray-50 rounded-md h-full relative">
                         <h3 className="text-xl font-bold mb-4">CSS</h3>
                         <button
                             onClick={() => copyToClipboard(cssContent)}
