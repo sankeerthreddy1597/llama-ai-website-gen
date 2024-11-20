@@ -1,14 +1,16 @@
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { ArrowUp, Bot } from "lucide-react"
+import { TypingPlaceHolder } from "../page"
 
 type ChatScreenTypes = {
     messages: any[],
     input: string,
     setInput: any,
-    handleSend: any
+    handleSend: any,
+    isLoading: boolean,
 }
 
-export const WebPageChatScreen = ({ messages, input, setInput, handleSend }: ChatScreenTypes) => {
+export const WebPageChatScreen = ({ messages, input, setInput, handleSend, isLoading }: ChatScreenTypes) => {
     return (
         <div className="flex flex-col lg:w-2/5 justify-between">
             {/* Header */}
@@ -21,24 +23,25 @@ export const WebPageChatScreen = ({ messages, input, setInput, handleSend }: Cha
                 {messages.map((msg: any, index: any) => (
                     <div
                         key={index}
-                        className={`flex ${msg.user === "me" ? "justify-end" : "justify-start"
+                        className={`flex ${msg.role === "user" ? "justify-end" : "justify-start"
                             }`}
                     >
                         <div
-                            className={`p-3 flex flex-row rounded-2xl gap-x-2 ${msg.user === "me"
+                            className={`p-3 flex flex-row rounded-2xl gap-x-2 ${msg.role === "user"
                                 ? "bg-gray-100 text-black max-w-xs"
                                 : "text-black"
                                 } my-1`}
                         >
-                            {msg.user !== "me" &&
+                            {msg.role !== "user" &&
                                 <Avatar className="h-8 w-8">
                                     <AvatarImage src="" />
                                     <AvatarFallback><Bot className="h-5 w-5 text-green-500" /></AvatarFallback>
                                 </Avatar>}
-                            <span className="pt-1">{msg.text}</span>
+                            <span className="pt-1">{msg.content}</span>
                         </div>
                     </div>
                 ))}
+                {isLoading && <TypingPlaceHolder />}
             </main>
 
             {/* Footer */}

@@ -17,7 +17,7 @@ import {
 import { Separator } from "@/components/ui/separator";
 import { ChatComponent } from "./_components/ChatComponent";
 
-const TypingPlaceHolder = () => (
+export const TypingPlaceHolder = () => (
   <div className="typing">
     <div className="typing__dot"></div>
     <div className="typing__dot"></div>
