@@ -6,8 +6,11 @@ Currently, only the API integration with llama works, and the code is not optimi
 Project In Progress
 
 Current UI
-/generate path
 
+path /generate
+<img width="1438" alt="Screenshot 2024-11-18 at 9 26 28 PM" src="https://github.com/user-attachments/assets/862434b0-fc38-48a5-bda2-fd3c6d5c6c6c">
+
+path: /
 
 Loading state while model prepares stream
 <img width="1432" alt="Screen Shot 2024-11-17 at 12 18 03 PM" src="https://github.com/user-attachments/assets/f4e14162-40e9-4856-b83b-ffc236e485d8">
