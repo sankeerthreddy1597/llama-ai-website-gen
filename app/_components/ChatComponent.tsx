@@ -8,6 +8,7 @@ import {
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 
 import { cn } from "@/lib/utils";
+import { Markdown } from "./Markdown";
 
 type ChatComponentType = {
     role: 'user' | 'Llama AI';
@@ -30,7 +31,11 @@ export const ChatComponent = ({ role = 'user', description, content }: ChatCompo
                 {description && <CardDescription>{description}</CardDescription>}
             </CardHeader>
             <CardContent>
-                <p>{content}</p>
+                <div className="flex flex-col gap-4">
+                    <Markdown>
+                        {content}
+                    </Markdown>
+                </div>
             </CardContent>
         </Card>
     )

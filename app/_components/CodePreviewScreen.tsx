@@ -4,24 +4,31 @@ import Prism from "prismjs";
 import "prismjs/themes/prism-okaidia.css";
 import { Copy } from "lucide-react";
 
-export const PreviewAndCodeTabs = () => {
-    const [htmlContent, setHtmlContent] = useState("<p>Hello, this is a preview!</p>");
-    const [cssContent, setCssContent] = useState("p { color: red; font-size: 20px; }");
+type PreviewCodeType = {
+    htmlContent: any,
+    cssContent: any,
+    setActiveTab: any,
+    activeTab: any
+}
 
-    const [prevHtmlContent, setPrevHtmlContent] = useState(htmlContent);
-    const [prevCssContent, setPrevCssContent] = useState(cssContent);
-    const [activeTab, setActiveTab] = useState('preview');
+export const PreviewAndCodeTabs = ({ htmlContent, cssContent, setActiveTab, activeTab }: PreviewCodeType) => {
+
+    // const [prevHtmlContent, setPrevHtmlContent] = useState(htmlContent);
+    // const [prevCssContent, setPrevCssContent] = useState(cssContent);
 
     const iframeRef = useRef<HTMLIFrameElement | null>(null);
 
     useEffect(() => {
+        console.log("triggered");
+        console.log(iframeRef.current);
         if (activeTab === "preview" && iframeRef.current) {
             const iframe = iframeRef.current;
-
+            console.log(htmlContent);
             // Ensure iframe is fully loaded before accessing content
             const iframeDocument = iframe.contentDocument || iframe.contentWindow?.document;
 
             if (iframeDocument) {
+                console.log('123', htmlContent);
                 // Set HTML content inside the iframe
                 iframeDocument.open();
                 iframeDocument.write(htmlContent);
@@ -33,7 +40,7 @@ export const PreviewAndCodeTabs = () => {
                 iframeDocument.head.appendChild(styleTag);
             }
         }
-    }, [htmlContent, cssContent, prevHtmlContent, prevCssContent, activeTab]);
+    }, [htmlContent, cssContent, activeTab, iframeRef.current]);
 
     // Highlight syntax when HTML or CSS content changes
     useEffect(() => {
@@ -46,9 +53,16 @@ export const PreviewAndCodeTabs = () => {
             .catch((err) => alert("Failed to copy: " + err));
     };
 
+    const IframeComponent = () => (<iframe
+        ref={iframeRef}
+        title="Preview"
+        className="w-full border p-2 rounded-md"
+        style={{ borderColor: "#ccc", height: "90%" }}
+    ></iframe>);
+
     return (
         <div className="w-full max-w-4xl h-full">
-            <Tabs defaultValue={activeTab} onValueChange={(v) => setActiveTab(v)} className="h-full">
+            <Tabs defaultValue={activeTab} onValueChange={setActiveTab} className="h-full">
                 <TabsList className="flex items-center text-muted-foreground w-full justify-start rounded-none border-b bg-transparent p-0">
                     <TabsTrigger
                         value="preview"
@@ -74,12 +88,7 @@ export const PreviewAndCodeTabs = () => {
                     <div className="border p-4 bg-gray-50 rounded-md h-full">
                         <h3 className="text-xl font-bold mb-4">Live Preview</h3>
                         {/* iframe that will show the HTML/CSS content */}
-                        <iframe
-                            ref={iframeRef}
-                            title="Preview"
-                            className="w-full border p-2 rounded-md"
-                            style={{ borderColor: "#ccc", height: "90%" }}
-                        ></iframe>
+                        <IframeComponent />
                     </div>
                 </TabsContent>
 

@@ -1,6 +1,7 @@
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { ArrowUp, Bot } from "lucide-react"
 import { TypingPlaceHolder } from "../page"
+import Markdown from "react-markdown"
 
 type ChatScreenTypes = {
     messages: any[],
@@ -12,7 +13,7 @@ type ChatScreenTypes = {
 
 export const WebPageChatScreen = ({ messages, input, setInput, handleSend, isLoading }: ChatScreenTypes) => {
     return (
-        <div className="flex flex-col lg:w-2/5 justify-between">
+        <div className="flex flex-col h-screen pb-8 lg:w-2/5 justify-between">
             {/* Header */}
             <header className="bg-gray-100 p-4 text-center font-bold">
                 Generate Web Page
@@ -37,7 +38,7 @@ export const WebPageChatScreen = ({ messages, input, setInput, handleSend, isLoa
                                     <AvatarImage src="" />
                                     <AvatarFallback><Bot className="h-5 w-5 text-green-500" /></AvatarFallback>
                                 </Avatar>}
-                            <span className="pt-1">{msg.content}</span>
+                            <span className="pt-1"><Markdown>{msg.content as string}</Markdown></span>
                         </div>
                     </div>
                 ))}
