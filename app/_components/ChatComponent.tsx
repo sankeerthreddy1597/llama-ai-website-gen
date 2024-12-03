@@ -18,7 +18,7 @@ type ChatComponentType = {
 
 export const ChatComponent = ({ role = 'user', description, content }: ChatComponentType) => {
     return (
-        <Card className={cn("lg:w-3/5 w-4/5 justify-items-end", role === 'Llama AI' ? 'bg-green-50' : '')}>
+        <Card className={cn("lg:w-3/5 w-4/5", role === 'Llama AI' ? 'bg-green-50 justify-items-end' : '')}>
             <CardHeader>
                 <CardTitle className="flex flex-row items-center gap-x-2">
                     <Avatar>
