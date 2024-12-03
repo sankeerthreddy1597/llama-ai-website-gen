@@ -12,12 +12,11 @@ path /generate
 
 path: /
 
+State after streaming is done
+<img width="1438" alt="Screenshot 2024-12-03 at 8 15 23 AM" src="https://github.com/user-attachments/assets/5f677e61-2b88-4ce3-b5a4-a02ac5cc3241">
+
 Loading state while model prepares stream
 <img width="1432" alt="Screen Shot 2024-11-17 at 12 18 03 PM" src="https://github.com/user-attachments/assets/f4e14162-40e9-4856-b83b-ffc236e485d8">
-
-State after streaming is done
-<img width="1430" alt="Screen Shot 2024-11-17 at 12 21 01 PM" src="https://github.com/user-attachments/assets/1c2a4e4f-89ca-4be7-9c9e-790d0093ee86">
-
 
 ## Prerequisites
 
